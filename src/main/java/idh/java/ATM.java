@@ -7,10 +7,10 @@ import java.io.InputStreamReader;
 public class ATM  {
 	
 	// initial cash in the ATM
-	int cash = 100;
+	int cash = 100000;
 		
 	// Which banknotes do we have?
-	int[] value_of_bills = new int[] {500, 200, 100, 50, 20, 10, 5};
+	int[] value_of_bills = new int[] {200, 100, 50, 20, 10, 5};
 
 	
 	/**
@@ -48,7 +48,7 @@ public class ATM  {
 		
 		
 		// withdraw
-		int[] bills = new int[] {0, 0, 0, 0, 0, 0, 0};
+		int[] bills = new int[] {0, 0, 0, 0, 0, 0};
 		try {
 			bills = convertToBills(amount);
 		} catch (IllegalInputException e) {
@@ -81,12 +81,13 @@ public class ATM  {
 	protected int[] convertToBills(int amount) throws IllegalInputException {
 		// illegal amount
 		if (amount < 0)
-			return new int[] {0,0,0,0,0,0,0};
+			return new int[] {0,0,0,0,0,0};
+		
 		
 		// return array for the different bill types
-		int[] r = new int[7];
+		int[] r = new int[6];
 		
-		// iterate over the possible pill types
+		// iterate over the possible bill types
 		// order is important here! Need to go from largest to smallest.
 		for (int i = 0;  i < value_of_bills.length; i++) {
 			r[i] = amount / value_of_bills[i];
