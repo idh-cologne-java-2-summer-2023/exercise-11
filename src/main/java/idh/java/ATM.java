@@ -103,6 +103,7 @@ public class ATM  {
 	 * Launches the ATM
 	 */
 	public static void main(String[] args) {
+		runTests();
 		ATM atm = new ATM();
 		atm.run();
 	};
@@ -112,5 +113,47 @@ public class ATM  {
 		private static final long serialVersionUID = 1L;
 		
 	}
+
+	    private static void runTests() {
+	        try {
+	            testConvertToBills_ValidAmount();
+	            testConvertToBills_NonDivisibleAmount();
+	            testConvertToBills_NegativeAmount();
+	            testConvertToBills_LowestPossibleAmount();
+	            testConvertToBills_LargestPossibleAmount();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    
+	    private static void testConvertToBills_ValidAmount() throws ATM.IllegalInputException {
+	    	 int[] expectedBills = {2, 0, 1, 0, 1, 0, 1};
+	         int[] actualBills = atm.convertToBills(1225);
+	         assertArrayEquals(expectedBills, actualBills);
+	    }
+
+	    private static void testConvertToBills_NonDivisibleAmount() throws ATM.IllegalInputException {
+	    	atm.convertToBills(123);
+	    }
+
+	    private static void testConvertToBills_NegativeAmount() throws ATM.IllegalInputException {
+	    	int[] expectedBills = {0, 0, 0, 0, 0, 0, 0};
+	        int[] actualBills = atm.convertToBills(-100);
+	        assertArrayEquals(expectedBills, actualBills);
+	    }
+
+	    private static void testConvertToBills_LowestPossibleAmount() throws ATM.IllegalInputException {
+	    	int[] expectedBills = {0, 0, 0, 0, 0, 0, 0};
+	        int[] actualBills = atm.convertToBills(0);
+	        assertArrayEquals(expectedBills, actualBills);
+	    }
+
+	    private static void testConvertToBills_LargestPossibleAmount() throws ATM.IllegalInputException {
+	    	int[] expectedBills = {2, 0, 0, 0, 0, 0, 0};
+	        int[] actualBills = atm.convertToBills(1000);
+	        assertArrayEquals(expectedBills, actualBills);
+	    }
 	
 }
+
+
