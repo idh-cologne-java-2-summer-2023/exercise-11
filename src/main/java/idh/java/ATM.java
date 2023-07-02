@@ -1,8 +1,10 @@
 package idh.java;
 
 
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+
 
 public class ATM  {
 	
@@ -92,7 +94,8 @@ public class ATM  {
 			r[i] = amount / value_of_bills[i];
 			amount = amount % value_of_bills[i];		
 		}
-		if (amount > 0) {
+	
+		if (amount < 0) {
 			throw new IllegalInputException();
 		}
 		return r;
