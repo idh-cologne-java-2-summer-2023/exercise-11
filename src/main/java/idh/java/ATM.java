@@ -2,12 +2,14 @@ package idh.java;
 
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+
 
 public class ATM  {
-	
 	// initial cash in the ATM
-	int cash = 100;
+	int cash = 100000;
 		
 	// Which banknotes do we have?
 	int[] value_of_bills = new int[] {500, 200, 100, 50, 20, 10, 5};
@@ -17,15 +19,18 @@ public class ATM  {
 	 * Main command loop of the ATM Asks the user to enter a number, and passes this
 	 * number to the function cashout(...) which actually does the calculation and
 	 * produces money. If the user enters anything else than an integer number, the
-	 * loop breaks and the program exists
+	 * loop breaks and the program exits
+	 * @throws IOException 
 	 */
-	public void run() {
+	public void run() throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		while (true) {
+		System.out.print("Enter the amount to withdraw: ");
+		String line;
+		while (!(line = br.readLine()).equals("exit")) {
 			try {
-				System.out.print("Enter the amount to withdraw: ");
-				int amount = Integer.parseInt(br.readLine());
+				int amount = Integer.parseInt(line);
 				cashout(amount);
+				System.out.print("Enter the amount to withdraw: ");
 			} catch (Exception e) {
 				e.printStackTrace();
 				break;
@@ -40,34 +45,36 @@ public class ATM  {
 			return;
 		}
 		
-		// check if value can be divided by 5
-		if (amount % 5 > 0) {
-			System.out.println("Sorry, this amount cannot be expressed in bills.");
-			return;
-		}
 		
 		
 		// withdraw
-		int[] bills = new int[] {0, 0, 0, 0, 0, 0, 0};
+		int[] bills = new int[7];
 		try {
+			
 			bills = convertToBills(amount);
-		} catch (IllegalInputException e) {
-			// this should not happen, since we're verifying it before
-			e.printStackTrace();
-		}
 		
 		// generate the printout string
 		StringBuilder b = new StringBuilder();
 		b.append("Ok, you'll get ");
 		int i;
 		for (i = 0; i < value_of_bills.length-1; i++) {
-			b.append(bills[i]).append(" ").append(value_of_bills[i]).append("s, ");
+			b.append(bills[i] + "x ").append(value_of_bills[i]).append("s, ");
 		}
-		b.append(" and ").append(bills[i]).append(" ").append(value_of_bills[i]);
+		b.append(bills[i] + "x ").append(value_of_bills[i] + "s");
+		int count = 0;
+		for (int e : bills) {
+			count += e;
+		}
+		b.append("\ntotal amount of bills is " + count);
 		System.out.println(b.toString());
 
-		cash += amount;
+		// subtract the entered amount from the available cash 
+		cash -= amount;
 		
+		} catch (IllegalInputException e) {
+			// this should not happen, since we're verifying it before
+			e.printStackTrace();
+		}
 	};
 
 	/**
@@ -79,19 +86,21 @@ public class ATM  {
 	 * @throws IllegalInputException 
 	 */
 	protected int[] convertToBills(int amount) throws IllegalInputException {
-		// illegal amount
-		if (amount < 0)
-			return new int[] {0,0,0,0,0,0,0};
-		
 		// return array for the different bill types
 		int[] r = new int[7];
 		
-		// iterate over the possible pill types
-		// order is important here! Need to go from largest to smallest.
-		for (int i = 0;  i < value_of_bills.length; i++) {
-			r[i] = amount / value_of_bills[i];
-			amount = amount % value_of_bills[i];		
+		if (amount == 0) return new int[] {0,0,0,0,0,0,0};
+		if (amount % 5 == 0) {
+			if (amount < 0) return new int[] {0,0,0,0,0,0,0};
+			
+			// iterate over the possible pill types
+			// order is important here! Need to go from largest to smallest.
+			for (int i = 0;  i < value_of_bills.length; i++) {
+				r[i] = amount / value_of_bills[i];
+				amount = amount % value_of_bills[i];		
+			}
 		}
+		
 		if (amount > 0) {
 			throw new IllegalInputException();
 		}
@@ -101,8 +110,9 @@ public class ATM  {
 	
 	/**
 	 * Launches the ATM
+	 * @throws IOException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		ATM atm = new ATM();
 		atm.run();
 	};
@@ -110,6 +120,7 @@ public class ATM  {
 	class IllegalInputException extends Exception {
 
 		private static final long serialVersionUID = 1L;
+		
 		
 	}
 	
