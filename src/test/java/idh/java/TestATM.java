@@ -12,8 +12,8 @@ public class TestATM {
 		//Habe versuch ATM Objekt mit BeforeEach anzulegen 
 		//aber konnte in keiner Testmethode darauf zugreifen(???)
 		ATM atm = new ATM();
-										//500, 200, 100, 50   20    10    5
-		int [] exp = new int [] {0,        0,      0,     0,    1,     1,     0};
+									
+		int [] exp = new int [] {0, 0, 0, 0, 1, 1, 0};
 		
 		//Kleine Zahlen
 		assertArrayEquals(exp, atm.convertToBills(30));
@@ -32,8 +32,8 @@ public class TestATM {
 		assertArrayEquals(exp, atm.convertToBills(90));
 		
 		//Grosse Zahlen
-											//500, 200, 100, 50   20    10    5
-		int [] expBig = new int [] {20,    0,      0,     0,    0,     0,     0};
+											
+		int [] expBig = new int [] {20, 0, 0, 0, 0, 0, 0};
 		assertArrayEquals(expBig, atm.convertToBills(10000));
 		
 		expBig[2] = 1;
@@ -65,7 +65,7 @@ public class TestATM {
 		ATM atm = new ATM();
 		
 		try {
-			atm.convertToBills(7);
+		atm.convertToBills(7);
 		} 
 		catch (Exception IllegalInputException) {
 			System.out.println("Dies ist die Ausgabe der erwarteten Exception");
