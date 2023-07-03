@@ -86,7 +86,7 @@ public class ATM  {
 		// return array for the different bill types
 		int[] r = new int[7];
 		
-		// iterate over the possible pill types
+		// iterate over the possible bill types
 		// order is important here! Need to go from largest to smallest.
 		for (int i = 0;  i < value_of_bills.length; i++) {
 			r[i] = amount / value_of_bills[i];
