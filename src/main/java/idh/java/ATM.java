@@ -96,7 +96,22 @@ public class ATM  {
 			throw new IllegalInputException();
 		}
 		return r;
+		
+		@Test
+		// Unit-Testing
+		int [] versuch1 = {5,10,15,20,25};
+		assertArrayEquals(versuch1);
+		
+		int [] versuch2 = {100,225,300,400,500};
+		assertArrayEquals(versuch2);
+		
+		int [] versuch3 = {-1,0,-10,-20,-50};
+		assertArrayEquals(versuch3);
+		
+		int [] versuch4 = {2,3,4,6,7};
+		assertArrayEquals(versuch4, IllegalInputException);
 	}
+	
 	
 	
 	/**
