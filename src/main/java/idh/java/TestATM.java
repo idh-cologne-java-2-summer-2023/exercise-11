@@ -31,14 +31,14 @@ public class TestATM {
 	}
 
 	@Test
+	public void testNegativeValue() throws IllegalInputException {
+		assertArrayEquals(new int[] { 0, 0, 0, 0, 0, 0, 0 }, testATM.convertToBills(-255));
+	}
+
+	@Test
 	public void testDivisibleFive() {
 		assertThrows(IllegalInputException.class, () -> {
 			testATM.convertToBills(8);
 		});
-	}
-
-	@Test
-	public void testNegativeValue() throws IllegalInputException {
-		assertArrayEquals(new int[] { 0, 0, 0, 0, 0, 0, 0 }, testATM.convertToBills(-255));
 	}
 }
