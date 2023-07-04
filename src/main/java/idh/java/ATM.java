@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 public class ATM  {
 	
 	// initial cash in the ATM
-	int cash = 100;
+	int cash = 100000;
 		
 	// Which banknotes do we have?
 	int[] value_of_bills = new int[] {500, 200, 100, 50, 20, 10, 5};
@@ -86,7 +86,7 @@ public class ATM  {
 		// return array for the different bill types
 		int[] r = new int[7];
 		
-		// iterate over the possible pill types
+		// iterate over the possible bill types
 		// order is important here! Need to go from largest to smallest.
 		for (int i = 0;  i < value_of_bills.length; i++) {
 			r[i] = amount / value_of_bills[i];
