@@ -21,6 +21,7 @@ public class TestATM {
 		this.myATM = new ATM();
 	}
 
+	
 	@Test
 	void testDivisibleByFive() throws IllegalInputException {
 		assertArrayEquals(new int[] { 0, 0, 1, 0, 1, 0, 0 }, this.myATM.convertToBills(120));
