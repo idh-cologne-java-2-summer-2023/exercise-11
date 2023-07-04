@@ -4,6 +4,8 @@ package idh.java;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+import org.junit.jupiter.api.Test;
+
 public class ATM  {
 	
 	// initial cash in the ATM
@@ -112,5 +114,20 @@ public class ATM  {
 		private static final long serialVersionUID = 1L;
 		
 	}
+	
+	class TestCalculator {
+		Calculator calculator = new Calculator();
+		
+		@Test
+		void addition() {
+			assertEquals(2, calculator.add(1, 1));
+		}
+		
+		@Test
+		void testAdd() {
+		assertTrue(calculator.add());
+	}
+		//Leider habe ich den Stoff, den wir in der letzten Sitzung behandlet haben, nicht wirklich verstanden. Ich habe länger probiert die Aufgabe trotz allem versucht zu lösen, bin jedoch gescheitert.
+
 	
 }
