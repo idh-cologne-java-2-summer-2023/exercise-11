@@ -9,6 +9,16 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 	</properties>
 	<dependencies>
+	<!-- Maven -->
+
+<!-- JUnit Jupiter -->
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter-api</artifactId>
+    <version>5.8.0</version>
+    <scope>test</scope>
+</dependency>
+
 		<!-- Allows implementing the tests -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
