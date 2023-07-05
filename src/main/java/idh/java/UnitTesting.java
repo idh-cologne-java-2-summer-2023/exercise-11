@@ -19,10 +19,10 @@ public class UnitTesting {
         @Test
         public void testFunction() throws IllegalInputException {
             assertArrayEquals(new int[] {0,1,0,0,0,0,0}, atm.convertToBills(200));
-            assertArrayEquals(new int[] {0,0,5,0,0,0,0}, atm.convertToBills(500));
-            assertArrayEquals(new int[] {0,2,0,0,2,0}, atm.convertToBills(420));
-            assertArrayEquals(new int[] {0,0,0,0,0,0,0}, atm.convertToBills(-100));
-            assertThrows(ATM.IllegalInputException.class, () -> {atm.convertToBills(666);});
+            assertArrayEquals(new int[] {1,0,0,0,0,0,0}, atm.convertToBills(500));
+            assertArrayEquals(new int[] {0,2,0,0,1,0,0}, atm.convertToBills(420));
+            assertArrayEquals(new int[] {0,0,1,0,0,0,0}, atm.convertToBills(100));
+            assertThrows(ATM.IllegalInputException.class, () -> {atm.convertToBills(777);});
 
 
         }
