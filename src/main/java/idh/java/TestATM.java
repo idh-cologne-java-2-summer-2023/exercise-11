@@ -25,7 +25,7 @@ public class TestATM {
 		assertArrayEquals(new int[] { 0, 0, 0, 0, 0, 0, 1 }, testATM.convertToBills(5));
 		assertArrayEquals(new int[] { 0, 1, 1, 1, 1, 1, 1 }, testATM.convertToBills(385));
 		assertArrayEquals(new int[] { 0, 0, 0, 1, 0, 0, 0 }, testATM.convertToBills(50));
-		//assertArrayEquals(new int[] { 0, 500, 0, 0, 0, 1, 0 }, testATM.convertToBills(10005));
+		assertArrayEquals(new int[] { 20, 0, 0, 0, 0, 0, 1 }, testATM.convertToBills(10005));
 	}
 
 	@Test
