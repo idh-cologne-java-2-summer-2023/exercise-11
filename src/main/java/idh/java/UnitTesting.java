@@ -15,6 +15,7 @@ public class UnitTesting {
             atm = new ATM();
         }
 
+
         @Test
         public void testFunction() throws IllegalInputException {
             assertArrayEquals(new int[] {0,1,0,0,0,0,0}, atm.convertToBills(200));
