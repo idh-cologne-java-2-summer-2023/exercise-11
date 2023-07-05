@@ -1,6 +1,5 @@
 package idh.java;
 
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -12,7 +11,6 @@ public class ATM  {
 	// Which banknotes do we have?
 	int[] value_of_bills = new int[] {500, 200, 100, 50, 20, 10, 5};
 
-	
 	/**
 	 * Main command loop of the ATM Asks the user to enter a number, and passes this
 	 * number to the function cashout(...) which actually does the calculation and
@@ -97,7 +95,6 @@ public class ATM  {
 		}
 		return r;
 	}
-	
 	
 	/**
 	 * Launches the ATM
