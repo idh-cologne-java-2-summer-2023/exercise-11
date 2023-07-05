@@ -25,5 +25,6 @@ public class ATMTest {
 		//Betrag ist negativ --> keine Scheine erwartet
 		int amount3 = -100;
 		int[]  expected3 = new int[] {0, 0, 0, 0, 0, 0, 0};
+		Assertions.assertArrayEquals(expected3, atm.convertToBills(amount3));
 	}
 }
