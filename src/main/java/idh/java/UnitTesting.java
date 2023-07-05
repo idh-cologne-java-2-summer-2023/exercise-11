@@ -22,8 +22,7 @@ public class UnitTesting {
             assertArrayEquals(new int[] {1,0,0,0,0,0,0}, atm.convertToBills(500));
             assertArrayEquals(new int[] {0,2,0,0,1,0,0}, atm.convertToBills(420));
             assertArrayEquals(new int[] {0,0,1,0,0,0,0}, atm.convertToBills(100));
-            assertThrows(ATM.IllegalInputException.class, () -> {atm.convertToBills(777);});
-
+            assertThrows(ATM.IllegalInputException.class, () -> atm.convertToBills(777));
 
         }
 
