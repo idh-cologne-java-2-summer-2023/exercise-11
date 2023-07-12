@@ -19,15 +19,16 @@ public class ATM  {
 	 * produces money. If the user enters anything else than an integer number, the
 	 * loop breaks and the program exists
 	 */
-	public void run() {
+	public void run() { //Run() startet das ATM und der User kann seine Eingaben machen
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
 			try {
 				System.out.print("Enter the amount to withdraw: ");
 				int amount = Integer.parseInt(br.readLine());
 				cashout(amount);
-			} catch (Exception e) {
+			} catch (Exception e) {//gibt Stacktrace + Fehlermeldung aus wenn Eingabe ungültig
 				e.printStackTrace();
+				System.out.println("Ungültige Eingabe! ATM muss neugestartet werden");
 				break;
 			}
 		}
@@ -53,7 +54,8 @@ public class ATM  {
 			bills = convertToBills(amount);
 		} catch (IllegalInputException e) {
 			// this should not happen, since we're verifying it before
-			e.printStackTrace();
+			e.printStackTrace(); //ich verstehe nicht, wie ich diese Fehlermeldung auslösen kann
+			System.out.println("lol");
 		}
 		
 		// generate the printout string
